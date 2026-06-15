@@ -1,57 +1,67 @@
-🤖 Telegram AI Companion Bot – You’re not alone
+# Telegram AI Companion Bot
 
-This project is a personal AI companion for Telegram, created especially for people who feel alone and just need someone to talk to, anytime.
+Bot de compañía y soporte emocional para Telegram, con respuestas en varios idiomas, alertas de error y capacidad de donación.
 
-It’s not just about answers.
-It’s about having presence, company, and support inside your pocket.
+## ❤️ Qué hace
+- Responde preguntas y conversa con el usuario.
+- Envía contenido de ánimo y compañía.
+- Permite recibir donaciones mediante enlaces.
+- Envía alertas de error a administradores.
 
-If this bot has helped you feel less alone, you can support its development here:
+## ⚙️ Requisitos
+- Python 3.10+
+- Git
+- Token de Telegram válido
 
-👉 https://ko-fi.com/sammy26
-
-Your contribution helps keep this companion alive for others who need it 💙
-
-⚙️ Requirements
-
-Python 3.10+
-
-Environment variables:
-
-TELEGRAM_TOKEN: your bot token (required)
-
-DONATION_URL: PayPal / Ko-fi link (optional)
-
-ADMIN_IDS: comma-separated list of Telegram user IDs that will receive error alerts and can use admin commands. Example: "12345678,87654321"
-
-LOG_LEVEL: log level (DEBUG, INFO, WARNING, ERROR). Default: INFO
-
-LOG_FILE: log file name. Default: bot.log
-
-SENTRY_DSN: Sentry DSN for remote error reporting (optional)
-
-🛠 Installation
-
-PowerShell (temporary):
-
+## 🚀 Instalación
+```powershell
+cd D:\mejoras_portafolio\repos\telegram-ai-bot
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
-$env:TELEGRAM_TOKEN = "YOUR_TOKEN_HERE"
-$env:DONATION_URL = "https://ko-fi.com/YOUR_USERNAME"  # optional
+```
+
+## 🔧 Configuración
+Copia el archivo de ejemplo y configura tus variables:
+```powershell
+copy .env.example .env
+```
+Edita `.env` y completa:
+- `TELEGRAM_TOKEN`
+- `DONATION_URL` (opcional)
+- `ADMIN_IDS`
+- `LOG_LEVEL` (DEBUG, INFO, WARNING, ERROR)
+- `LOG_FILE`
+- `SENTRY_DSN` (opcional)
+
+## ▶️ Ejecución
+### Modo local
+```powershell
 python .\bot.py
+```
 
-📌 Available Commands
+### Modo Webhook
+```powershell
+python .\webhook_server.py
+```
 
-/start – start the bot
+## 📌 Comandos disponibles
+- `/start` – Iniciar conversación
+- `/donar` o `/donate` – Mostrar enlace de donación
+- `/help` – Mostrar ayuda en el idioma del usuario
 
-/donar or /donate – show donation link
+## 🛡️ Seguridad
+- No subas `TELEGRAM_TOKEN` a repositorios públicos.
+- Usa `ADMIN_IDS` para controlar quién recibe alertas.
+- Ajusta `LOG_LEVEL` y `LOG_FILE` para monitorear el bot.
 
-/help – show help (localized according to client language: es/en/ru)
+## 🧠 Archivos importantes
+- `bot.py` – entrada principal.
+- `webhook_server.py` – servidor de webhook.
+- `requirements.txt` – dependencias.
+- `LICENSE` – licencia MIT.
 
-⚠️ Notes
+## 📄 Licencia
+Este proyecto está bajo licencia MIT.
 
-Keep your bot token private. Do not upload it to public repositories.
-
-For production, consider using webhooks, logging, and a database for user and credit persistence.
-
-Logging: the bot writes logs to console and to a rotating file (LOG_FILE). You can configure LOG_LEVEL, LOG_FILE, LOG_MAX_BYTES, and LOG_BACKUP_COUNT.
-
-To receive error alerts via Sentry, configure SENTRY_DSN.
